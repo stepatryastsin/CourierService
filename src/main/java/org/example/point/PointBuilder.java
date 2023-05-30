@@ -1,5 +1,7 @@
 package org.example.point;
-
+/**
+ * Класс реализует проверки для точки, ограничение по карте (X;Y) 100 на 100
+ */
 public class PointBuilder {
     public static boolean pointIsValid(double x, double y) {
         try {

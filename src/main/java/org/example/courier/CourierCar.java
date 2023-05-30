@@ -1,20 +1,23 @@
 package org.example.courier;
 
-import org.example.person.Person;
-
+import org.example.abstractPerson.Person;
+import org.example.point.Point;
+/**
+ * Курьер на машине,ограничения по {@link CourierCar#speed} не быстрее 16 м/с (60 км/ч),ограничения по {@link CourierCar#energy} не больше 10 кг, наследник {@link Person}
+ */
 public class CourierCar extends Person {
     private int id;
     private String name;
     private double speed;
     private double energy;
-    private boolean free;
+    private Point location;
 
     public CourierCar() {
         super();
     }
 
-    public CourierCar(int id, String name,double speed,double energy) {
-        super(id, name,speed,energy);
+    public CourierCar(int id, String name,double speed,double energy,String timeStartInterval,String timeEndCourier,Point location) {
+        super(id, name,speed,energy,timeStartInterval,timeEndCourier, location);
     }
 
     @Override
@@ -58,13 +61,24 @@ public class CourierCar extends Person {
     }
 
     @Override
+    public Point getLocation() {
+        return location;
+    }
+
+    @Override
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+    @Override
     public String toString() {
-        return "CourierCar{" +
-                "id=" + getId() +
-                ", name='" + getName() + '\'' +
-                ", speed=" + getSpeed() +
-                ", energy=" + getEnergy() +
-                ", free=" + getIsFree() +
+        return
+                "id=" + id +
+                ", Type=By car" +
+                ", name='" + name + '\'' +
+                ", speed=" + speed +
+                ", energy=" + energy +
+                ", location=" + location +
                 '}';
     }
 }

@@ -1,10 +1,16 @@
 package org.example.fabricOrder;
 
-import org.example.order.EnumOrder;
-import org.example.order.Order;
+import org.example.checkOrder.CheckOrder;
+import org.example.enumType.EnumOrder;
+import org.example.abstractOrder.Order;
+import org.example.order.OrderHard;
+import org.example.order.OrderLight;
+import org.example.order.OrderMedium;
 import org.example.point.Point;
 import org.example.time.Time;
-
+/**
+ * Реализация шаблона фабрики и билдера для создания заказа по индивидуальным параметрам
+ */
 public class BuilderOrder {
     Order order;
 
@@ -26,16 +32,15 @@ public class BuilderOrder {
         order.setPointFinish(pointFinish);
         return this;
     }
-
-    public BuilderOrder timeStart (Time timeStart) {
-        order.setTimeStart(timeStart);
+    public BuilderOrder weight (double weight) {
+        order.setWeight(weight);
+        return this;
+    }
+    public BuilderOrder time (Time time) {
+        order.setTime(time);
         return this;
     }
 
-    public BuilderOrder timeFinish (Time timeFinish) {
-        order.setTimeFinish(timeFinish);
-        return this;
-    }
 
     public Order build() {
         return order;
@@ -45,19 +50,22 @@ public class BuilderOrder {
     private class Factory {
         Order getNewOrder(EnumOrder enumOrder) throws Exception {
             Order order = null;
-
+            CheckOrder checkOrder = new CheckOrder();
             switch (enumOrder) {
                 case LIGHT:
-                    order.setWeight(EnumOrder.LIGHT);
+                    order = new OrderLight();
+                    if (checkOrder.checkOrderLight(order)) throw new Exception("Не коректные данные!");
                     break;
                 case MEDIUM:
-                    order.setWeight(EnumOrder.MEDIUM);
+                    order = new OrderMedium();
+                    if (checkOrder.checkOrderMedium(order)) throw new Exception("Не коректные данные!");
                     break;
                 case HARD:
-                    order.setWeight(EnumOrder.HARD);
+                    order = new OrderHard();
+                    if (checkOrder.checkOrderHard(order)) throw new Exception("Не коректные данные!");
                     break;
                 default:
-                    throw new Exception("Invalid order type!");
+                    throw new Exception("Не коректные данные!");
             }
             return order;
         }

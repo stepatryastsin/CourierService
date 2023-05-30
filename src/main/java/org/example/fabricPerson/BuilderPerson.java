@@ -1,13 +1,17 @@
 package org.example.fabricPerson;
 
+
 import org.example.checkCourier.CheckCourier;
 import org.example.checkCourier.ICheckCourier;
 import org.example.courier.CourierBike;
 import org.example.courier.CourierCar;
 import org.example.courier.CourierPeople;
 import org.example.enumType.EnumCourier;
-import org.example.person.Person;
-
+import org.example.abstractPerson.Person;
+import org.example.point.Point;
+/**
+ * Реализация шаблона фабрики и билдера для создания курьера по индивидуальным параметрам
+ */
 public class BuilderPerson {
 
     Person person;
@@ -39,6 +43,10 @@ public class BuilderPerson {
         person.setSetIsFree(free);
         return this;
     }
+    public BuilderPerson location(Point location){
+        person.setLocation(location);
+        return this;
+    }
     public Person build() {
         return person;
     }
@@ -52,38 +60,39 @@ public class BuilderPerson {
             switch (enumCourier) {
                 case CAR:
                     person = new CourierCar();
-                    if(checkCourier.checkCarCourier(person)) throw new Exception("Не коректные данные");
+                    if(checkCourier.checkCarCourier(person)) throw new Exception("Не коректные данные!");
                     break;
                 case BIKE:
                     person = new CourierBike();
+                    if(checkCourier.checkBikeCourier(person)) throw new Exception("Не коректные данные");
                     break;
                 case PEOPLE:
                     person = new CourierPeople();
+                    if(checkCourier.checkPeopleCourier(person)) throw new Exception("Не коректные данные");
                     break;
                 default:
-                    throw new Exception("Invalid product type!");
+                    throw new Exception("Не коректные данные!");
             }
-
             return person;
         }
-        Person getNewCourier(int id, String name, double speed, double energy, EnumCourier enumCourier) throws Exception {
+        Person getNewCourier(int id, String name, double speed, double energy, Point location,String timeStartInterval,String timeEndCourier, EnumCourier enumCourier) throws Exception {
             Person person = null;
             ICheckCourier checkCourier = new CheckCourier();
             switch (enumCourier) {
                 case CAR:
-                    person = new CourierCar(id,name,speed,energy);
+                    person = new CourierCar(id,name,speed,energy,timeStartInterval,timeEndCourier,location);
                     if(checkCourier.checkCarCourier(person)) throw new Exception("Не коректные данные");
                     break;
                 case BIKE:
-                    person = new CourierBike(id,name,speed,energy);
+                    person = new CourierBike(id,name,speed,energy,timeStartInterval,timeEndCourier,location);
                     if(checkCourier.checkBikeCourier(person)) throw new Exception("Не коректные данные");
                     break;
                 case PEOPLE:
-                    person = new CourierPeople(id,name,speed,energy);
+                    person = new CourierPeople(id,name,speed,energy,timeStartInterval,timeEndCourier,location);
                     if(checkCourier.checkPeopleCourier(person)) throw new Exception("Не коректные данные");
                     break;
                 default:
-                    throw new Exception("Invalid product type!");
+                    throw new Exception("Не коректные данные!");
             }
             return person;
         }
