@@ -1,8 +1,6 @@
 package org.example.dividingTheQueue;
 
-import org.example.abstractOrder.Order;
-import org.example.abstractPerson.Person;
-import org.example.distanceAndTime.SortedOrder;
+import org.example.entity.Order;
 
 import java.text.ParseException;
 import java.util.*;

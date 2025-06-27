@@ -1,8 +1,8 @@
 package org.example.basicAlgorithm;
 
-import org.example.abstractOrder.Order;
-import org.example.abstractPerson.Person;
-import org.example.pupose.Purpose;
+import org.example.entity.Order;
+import org.example.entity.Person;
+import org.example.entity.Purpose;
 import org.example.schedule.Schedule;
 import org.example.utils.Utils;
 

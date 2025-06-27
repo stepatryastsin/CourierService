@@ -20,9 +20,9 @@ public class StartApplication extends Application {
 
         Scene start = new Scene(start_loader.load());
 
-        Image icon = new Image(getClass().getResource("/human.png").toExternalForm());
+        //Image icon = new Image(getClass().getResource("/human.png").toExternalForm());
 
-        stage.getIcons().add(icon);
+        //stage.getIcons().add(icon);
 
         stage.setTitle("Courier");
 

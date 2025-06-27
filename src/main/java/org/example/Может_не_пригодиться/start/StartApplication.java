@@ -1,11 +1,9 @@
 package org.example.Может_не_пригодиться.start;
 
-import org.example.abstractOrder.Order;
-import org.example.abstractPerson.Person;
+import org.example.entity.Order;
+import org.example.entity.Person;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class StartApplication {
     List<Person> allPeople;

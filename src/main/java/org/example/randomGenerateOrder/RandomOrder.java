@@ -1,9 +1,9 @@
 package org.example.randomGenerateOrder;
 
-import org.example.abstractOrder.Order;
-import org.example.enumType.EnumOrder;
+import org.example.entity.Order;
+import org.example.entity.EnumOrder;
 import org.example.fabricOrder.BuilderOrder;
-import org.example.point.Point;
+import org.example.entity.Point;
 
 import org.example.time.TimeBuilder;
 import java.sql.Time;
@@ -57,7 +57,7 @@ public class RandomOrder {
             orderList.add(new BuilderOrder(randomEnum(EnumOrder.class)).id(generateId()).
                             pointStart(new Point(generateNumber(0,100),generateNumber(0,100))).
                             pointFinish(new Point(generateNumber(0,100),generateNumber(0,100))).
-                    time(new org.example.time.Time(generateTime().get(0),generateTime().get(1))).build());
+                    time(new org.example.entity.Time(generateTime().get(0),generateTime().get(1))).build());
         }
         return orderList;
     }

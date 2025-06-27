@@ -1,6 +1,6 @@
 package org.example.Может_не_пригодиться.collectionPoint;
 
-import org.example.point.Point;
+import org.example.entity.Point;
 
 public class CollectionPoint {
     private int id;

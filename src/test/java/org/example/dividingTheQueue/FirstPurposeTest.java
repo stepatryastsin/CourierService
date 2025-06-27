@@ -1,11 +1,11 @@
 package org.example.dividingTheQueue;
 
-import org.example.abstractOrder.Order;
-import org.example.abstractPerson.Person;
+import org.example.entity.Order;
+import org.example.entity.Person;
 import org.example.basicAlgorithm.BasicAlgorithm;
-import org.example.point.Point;
+import org.example.entity.Point;
 import org.example.schedule.Schedule;
-import org.example.time.Time;
+import org.example.entity.Time;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;

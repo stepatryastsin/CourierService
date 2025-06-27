@@ -1,18 +1,17 @@
 package org.example.randomGeneratePeople;
 
 import com.github.javafaker.Faker;
-import org.example.abstractPerson.Person;
-import org.example.enumType.EnumCourier;
+import org.example.entity.Courier;
+import org.example.entity.Person;
+import org.example.entity.EnumCourier;
 import org.example.fabricPerson.BuilderPerson;
-import org.example.point.Point;
+import org.example.entity.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-/**
- * Класс генерирует курьеров {@link Person} с разными полями для стресс теста
- */
+
 public class RandomPeople {
-    private List<Person> personList = new ArrayList<>();
+    private List<Courier> personList = new ArrayList<>();
     public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
         Random random = new Random();
         int x = random.nextInt(clazz.getEnumConstants().length);
@@ -35,7 +34,7 @@ public class RandomPeople {
     /**
      * Метод {@link RandomPeople#generateNumber}  генерирует колличество заказов по передаваемому числу.
      */
-   public List<Person> getAllList(int count) throws Exception {
+   public List<Courier> getAllList(int count) throws Exception {
        for (int i = 0; i < count; i++) {
            personList.add(new BuilderPerson(randomEnum(EnumCourier.class)).id(generateId()).
                    name(generateName()).

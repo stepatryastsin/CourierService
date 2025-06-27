@@ -1,8 +1,7 @@
 package org.example.point;
 
+import org.example.entity.Point;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PointTest {
 

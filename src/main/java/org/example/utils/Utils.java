@@ -1,31 +1,24 @@
 package org.example.utils;
 
-import org.apache.maven.plugin.lifecycle.Execution;
-import org.example.abstractOrder.Order;
-import org.example.abstractPerson.Person;
-import org.example.point.Point;
-
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import org.example.entity.Courier;
+import org.example.entity.Order;
 
 public class Utils {
 
-    public static String timeExecution (int timeStartInterval, String time) {
-        if (timeStartInterval == 0) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-            LocalTime lt = LocalTime.parse(time);
-            return formatter.format(lt.plusMinutes(1));
-        }
-        if (timeStartInterval < 0) {
-            throw new RuntimeException("Неверное время!");
-        }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime lt = LocalTime.parse(time);
-        return formatter.format(lt.plusMinutes(timeStartInterval));
+    public static void swapLocation (Courier courier, Order order) {
+        courier.setLocation(order.getFinish());
     }
 
-    public static void swapLocation (Person courier, Order order) {
-        courier.setLocation(order.getPointFinish());
+    public static float getDistance(Courier person, Order order) {
+        float distToWarehouse = person.getLocation().distanceTo(order.getStart());
+        float distToClient = order.getStart().distanceTo(order.getFinish());
+        return distToWarehouse+distToClient;
     }
-
+    public static long getTime(Courier person, Order order){
+        return (long) (getDistance(person,order) / person.getSpeed());
+    }
+    public static double moneySum(Courier courier, Order order) {
+        double distance = Utils.getDistance(courier,order);
+        return distance * 1.07 * (order.getWeight() * 0.75) + 200;
+    }
 }

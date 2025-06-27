@@ -1,7 +1,7 @@
 package org.example.checkCourier;
 
-import org.example.abstractPerson.Person;
-import org.example.enumType.EnumCourier;
+import org.example.entity.Person;
+import org.example.entity.EnumCourier;
 import org.example.fabricPerson.BuilderPerson;
 import org.junit.jupiter.api.Test;
 

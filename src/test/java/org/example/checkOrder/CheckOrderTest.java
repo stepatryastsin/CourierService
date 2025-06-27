@@ -1,13 +1,8 @@
 package org.example.checkOrder;
 
-import org.example.abstractOrder.Order;
-import org.example.abstractPerson.Person;
-import org.example.checkCourier.CheckCourier;
-import org.example.checkCourier.ICheckCourier;
-import org.example.enumType.EnumCourier;
-import org.example.enumType.EnumOrder;
+import org.example.entity.Order;
+import org.example.entity.EnumOrder;
 import org.example.fabricOrder.BuilderOrder;
-import org.example.fabricPerson.BuilderPerson;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

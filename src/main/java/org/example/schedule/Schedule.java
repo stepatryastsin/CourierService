@@ -1,6 +1,5 @@
 package org.example.schedule;
-import org.example.abstractPerson.Person;
-import org.example.pupose.Purpose;
+import org.example.entity.Purpose;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

@@ -1,13 +1,9 @@
 package org.example.fabricOrder;
 
-import org.example.checkOrder.CheckOrder;
-import org.example.enumType.EnumOrder;
-import org.example.abstractOrder.Order;
-import org.example.order.OrderHard;
-import org.example.order.OrderLight;
-import org.example.order.OrderMedium;
-import org.example.point.Point;
-import org.example.time.Time;
+import org.example.entity.EnumOrder;
+import org.example.entity.Order;
+import org.example.entity.Point;
+import org.example.entity.Time;
 /**
  * Реализация шаблона фабрики и билдера для создания заказа по индивидуальным параметрам
  */

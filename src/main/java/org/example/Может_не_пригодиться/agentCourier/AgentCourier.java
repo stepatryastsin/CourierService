@@ -1,8 +1,8 @@
 package org.example.Может_не_пригодиться.agentCourier;
 
 import org.example.Может_не_пригодиться.ID.ID;
-import org.example.abstractPerson.Person;
-import org.example.point.Point;
+import org.example.entity.Person;
+import org.example.entity.Point;
 
 public class AgentCourier extends Person {
     private ID id; //id непонятно как использовать
