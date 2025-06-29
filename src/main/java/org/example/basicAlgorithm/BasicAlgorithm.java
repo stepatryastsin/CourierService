@@ -1,23 +1,23 @@
 package org.example.basicAlgorithm;
 
+import org.example.entity.Courier;
 import org.example.entity.Order;
-import org.example.entity.Person;
 import org.example.entity.Purpose;
 import org.example.schedule.Schedule;
-import org.example.utils.Utils;
+
 
 import java.util.*;
 
 
 public class BasicAlgorithm {
     private static void updatePurpose(Purpose purpose){
-            purpose.getCourier().setTimeStartCourier(Utils.timeExecution((int) purpose.getTimeExecution(), purpose.getCourier().getTimeStartCourier()));
-            purpose.getOrder().getTime().setEndTimeInterval(purpose.getCourier().getTimeStartCourier());
+            //purpose.getCourier().set(Utils.timeExecution((int) purpose.getTimeExecution(), purpose.getCourier().getTimeStartCourier()));
+            //purpose.getOrder().getTime().setEndTimeInterval(purpose.getCourier().getTimeStartCourier());
     }
     private static void cleanPurpose(Schedule ideaSchedule){
         for (int i = 0; i < ideaSchedule.getAllPurpose().size(); i++) {
-            ideaSchedule.getAllPurpose().get(i).getCourier().setTimeStartCourier(ideaSchedule.getAllPurpose().get(i).getOrder().getTime().getStartTimeInterval());
-            ideaSchedule.getAllPurpose().get(i).getOrder().getTime().setEndTimeInterval( ideaSchedule.getAllPurpose().get(i).getCourier().getTimeEndCourier());
+           // ideaSchedule.getAllPurpose().get(i).getCourier().setTimeStartCourier(ideaSchedule.getAllPurpose().get(i).getOrder().getTime().getStartTimeInterval());
+           // ideaSchedule.getAllPurpose().get(i).getOrder().getTime().setEndTimeInterval( ideaSchedule.getAllPurpose().get(i).getCourier().getTimeEndCourier());
         }
     }
     private static ArrayList<Integer> list = new ArrayList<>();
@@ -36,7 +36,7 @@ public class BasicAlgorithm {
         return value;
     }
 
-    public static Schedule basicAlgorithm (List<Person> personList, List<Order> orderList) {
+    public static Schedule basicAlgorithm (List<Courier> personList, List<Order> orderList) {
         if (personList == null && orderList == null) {
             throw new RuntimeException("Передан(ы) пустой(ые) лист(ы)!");
         }

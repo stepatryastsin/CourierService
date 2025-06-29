@@ -2,10 +2,7 @@ package org.example.randomGeneratePeople;
 
 import com.github.javafaker.Faker;
 import org.example.entity.Courier;
-import org.example.entity.Person;
-import org.example.entity.EnumCourier;
-import org.example.fabricPerson.BuilderPerson;
-import org.example.entity.Point;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -36,10 +33,10 @@ public class RandomPeople {
      */
    public List<Courier> getAllList(int count) throws Exception {
        for (int i = 0; i < count; i++) {
-           personList.add(new BuilderPerson(randomEnum(EnumCourier.class)).id(generateId()).
+          /* personList.add(new BuilderPerson(randomEnum(EnumCourier.class)).id(generateId()).
                    name(generateName()).
                    speed(generateNumber(1,30)).energy(generateNumber(1,30)).
-                   location(new Point(generateNumber(1,100),generateNumber(1,100))).build());
+                   location(new Point(generateNumber(1,100),generateNumber(1,100))).build());*/
        }
        return personList;
    }

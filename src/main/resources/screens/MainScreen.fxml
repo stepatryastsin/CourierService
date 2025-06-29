@@ -43,204 +43,233 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="500.0" prefWidth="972.0" style="-fx-background-color: #79305a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javaFX.MainController">
+<VBox prefHeight="600.0" prefWidth="972.0" style="-fx-background-color: #79305a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javaFX.MainController">
    <children>
-      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="970.0" style="-fx-background-color: #2c2c2c;" VBox.vgrow="ALWAYS">
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="587.0" prefWidth="960.0" style="-fx-background-color: #2c2c2c;" VBox.vgrow="ALWAYS">
          <children>
-            <AnchorPane layoutX="225.0" layoutY="255.0" prefHeight="200.0" prefWidth="545.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="15.0">
+
+            <!-- Courier Section -->
+            <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="283.0" prefWidth="613.0" style="-fx-background-color: #242424;" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="14.0">
                <children>
-                  <TextField fx:id="endTimeOrder" layoutX="88.0" layoutY="80.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;  -fx-text-fill: #9f2b68;" />
-                  <TextField fx:id="startTimeOrder" layoutX="88.0" layoutY="45.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
-                  <Label layoutX="19.0" layoutY="45.0" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #242424;" text="Time 1" textFill="#9f2b68" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="45.0">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <Label layoutX="19.0" layoutY="80.0" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #242424;" text="Time 2" textAlignment="CENTER" textFill="#9f2b68" AnchorPane.topAnchor="80.0">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <SplitMenuButton fx:id="OrderType" layoutX="20.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #1e1e1e;" text="Type" textFill="#9f2b68" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="148.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#LightOrder" text="Light" />
-                        <MenuItem mnemonicParsing="false" onAction="#MediumOrder" text="Medium" />
-                        <MenuItem mnemonicParsing="false" onAction="#HardOrder" text="Hard" />
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </SplitMenuButton>
-                  <ListView fx:id="OrderList" layoutX="306.0" layoutY="8.0" prefHeight="130.0" prefWidth="201.0" style="-fx-background-color: #2c2c2c;" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="10.0" />
-
-                  <TextField layoutX="200.0" layoutY="80.0" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" fx:id="xStartOrder" />
-
-
-                  <Label layoutX="240.0" layoutY="80.0" style="-fx-background-color: #242424;" text="y" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-
-
-                  <TextField fx:id="yStartOrder" layoutX="260.0" layoutY="80.0" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
-
-                  <Label layoutX="180.0" layoutY="150.0" style="-fx-background-color: #242424;" text="x" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-
-                  <TextField layoutX="200.0" layoutY="150.0" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" fx:id="xEndOrder" />
-
-                  <Label layoutX="240.0" layoutY="150.0" style="-fx-background-color: #242424;" text="y" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-
-                  <TextField fx:id="yEndOrder" layoutX="260.0" layoutY="150.0" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
-
-                  <TextField fx:id="weightOrder" layoutX="88.0" layoutY="115.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
-
-                  <Label layoutX="19.0" layoutY="115.0" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #242424;" text="Weight" textAlignment="CENTER" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <Label layoutX="180.0" layoutY="45.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #242424;" text="Start location" textAlignment="CENTER" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <Label layoutX="178.0" layoutY="115.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #242424;" text="End location" textAlignment="CENTER" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <Button layoutX="440.0" layoutY="145.0" mnemonicParsing="false" onAction="#ClearOrderList" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;" text="Clear" textFill="#9f2b68" AnchorPane.bottomAnchor="20.0">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Button>
-                  <Label layoutX="19.0" layoutY="10.0" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #1e1e1e;" text="New Order" textAlignment="CENTER" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font></Label>
-                  <Button fx:id="StartButton11" layoutX="319.0" layoutY="145.0" mnemonicParsing="false" onAction="#AddOrder" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #1e1e1e;" text="+" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Button>
-                  <Label layoutX="180.0" layoutY="80.0" style="-fx-background-color: #242424;" text="x" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
+                  <Label layoutX="123.0" layoutY="10.0" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #1e1e1e;" text="New Courier" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="24.0" /></font>
                   </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="38.0" layoutY="25.0" prefHeight="200.0" prefWidth="545.0" style="-fx-background-color: #242424;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="25.0">
-               <children>
-                  <TextField fx:id="speedCourier" layoutX="86.0" layoutY="80.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
-                  <TextField fx:id="nameCourier" layoutX="86.0" layoutY="45.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;-fx-text-fill: #9f2b68;" />
-                  <Label layoutX="19.0" layoutY="45.0" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #242424;" text="Name" textAlignment="CENTER" textFill="#9f2b68" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="45.0">
+
+                  <Label layoutX="8.0" layoutY="58.0" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #242424;" text="Name:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField fx:id="nameCourier" layoutX="67.0" layoutY="57.0" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <Label layoutX="19.0" layoutY="80.0" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #242424;" text="Speed" textAlignment="CENTER" textFill="#9f2b68" AnchorPane.topAnchor="80.0">
+                        <Font size="14.0" />
+                     </font></TextField>
+
+                  <Label layoutX="137.0" layoutY="57.0" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #242424;" text="Speed:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField fx:id="speedCourier" layoutX="201.0" layoutY="56.0" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <SplitMenuButton fx:id="CourierType" layoutX="17.0" layoutY="152.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #1e1e1e;" text="Type" textFill="#9f2b68" AnchorPane.topAnchor="152.0">
+                        <Font size="14.0" />
+                     </font></TextField>
+
+                  <Label layoutX="271.0" layoutY="58.0" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #242424;" text="Energy:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField fx:id="energyCourier" layoutX="343.0" layoutY="57.0" prefHeight="30.0" prefWidth="67.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+
+                  <Label layoutX="298.0" layoutY="95.0" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="Location:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField alignment="CENTER" layoutX="285.0" layoutY="129.0" prefHeight="30.0" prefWidth="43.0" promptText="x" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" fx:id="xCourier">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField fx:id="yCourier" alignment="CENTER" layoutX="357.0" layoutY="128.0" prefHeight="32.0" prefWidth="43.0" promptText="y" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <Label layoutX="270.0" layoutY="130.0" style="-fx-background-color: #242424;" text="x:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <Label layoutX="336.0" layoutY="130.0" prefHeight="27.0" prefWidth="15.0" style="-fx-background-color: #242424;" text="y:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+
+                  <SplitMenuButton fx:id="CourierType" layoutX="12.0" layoutY="168.0" prefHeight="30.0" prefWidth="149.0" style="-fx-background-color: #1e1e1e;" text="Type" textFill="#9f2b68">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#BikeCourier" text="Bike" />
                         <MenuItem mnemonicParsing="false" onAction="#CarCourier" text="Car" />
                         <MenuItem mnemonicParsing="false" onAction="#PeopleCourier" text="On foot" />
                      </items>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
+                     <font><Font name="System Bold" size="16.0" /></font>
                   </SplitMenuButton>
-                  <ListView fx:id="CourierList" layoutX="306.0" layoutY="8.0" prefHeight="130.0" prefWidth="201.0" style="-fx-background-color: #2c2c2c;" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="10.0" />
-                  <Label layoutX="176.0" layoutY="152.0" style="-fx-background-color: #242424;" text="x" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
 
-                  <TextField layoutX="200.0" layoutY="155.0" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" fx:id="xCourier" />
-                  <TextField fx:id="yCourier" layoutX="260.0" layoutY="155.0" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #1e1e1e;-fx-text-fill: #9f2b68;" />
+                  <TextField fx:id="courierTimeStart" alignment="CENTER" layoutX="67.0" layoutY="93.0" prefHeight="30.0" prefWidth="193.0" promptText="From" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField fx:id="courierTimeEnd" alignment="CENTER" layoutX="68.0" layoutY="127.0" prefHeight="30.0" prefWidth="193.0" promptText="To" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <Label layoutX="12.0" layoutY="93.0" prefHeight="30.0" prefWidth="52.0" style="-fx-background-color: #242424;" text="From:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <Label layoutX="12.0" layoutY="128.0" style="-fx-background-color: #242424;" text="To:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
 
-                  <Label layoutX="240.0" layoutY="152.0" style="-fx-background-color: #242424;" text="y" textFill="#9f2b68">
+                  <ListView fx:id="CourierList" layoutX="416.0" layoutY="9.0" prefHeight="262.0" prefWidth="186.0" style="-fx-background-color: #2c2c2c;" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="9.0" />
+
+                  <Button fx:id="addCourier" layoutX="277.0" layoutY="166.0" onAction="#AddCourier" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #1e1e1e;" text="+" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Button>
+                  <Button layoutX="327.0" layoutY="166.0" onAction="#ClearCourierList" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;" text="Clear" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Button>
+
+                  <!-- Generate Random Couriers -->
+                  <Label layoutX="167.0" layoutY="168.0" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="Random:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="16.0" /></font>
+                  </Label>
+                  <TextField fx:id="randomCourierCount" alignment="CENTER" layoutX="237.0" layoutY="166.0" prefHeight="39.0" prefWidth="34.0" promptText="m" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <TextField fx:id="energyCourier" layoutX="86.0" layoutY="115.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
-                  <Label layoutX="19.0" layoutY="115.0" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #242424;" text="Energy" textAlignment="CENTER" textFill="#9f2b68">
+                        <Font size="14.0" />
+                     </font></TextField>
+               </children>
+            </AnchorPane>
+
+            <!-- Order Section -->
+            <AnchorPane layoutX="11.0" layoutY="310.0" prefHeight="276.0" prefWidth="613.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="11.0">
+               <children>
+                  <Label layoutX="152.0" layoutY="10.0" prefHeight="35.0" prefWidth="124.0" style="-fx-background-color: #1e1e1e;" text="New Order" textAlignment="CENTER" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="24.0" /></font>
+                  </Label>
+
+                  <Label layoutX="19.0" layoutY="53.0" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #242424;" text="Start timel:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField fx:id="startTimeOrder" layoutX="117.0" layoutY="54.0" prefHeight="30.0" prefWidth="165.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
+
+                  <Label layoutX="18.0" layoutY="88.0" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: #242424;" text="End time:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField fx:id="endTimeOrder" layoutX="117.0" layoutY="89.0" prefHeight="30.0" prefWidth="165.0" style="-fx-background-color: #1e1e1e;  -fx-text-fill: #9f2b68;" />
+
+                  <Label layoutX="19.0" layoutY="124.0" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #242424;" text="Weight:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField fx:id="weightOrder" layoutX="119.0" layoutY="125.0" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
+
+                  <Label layoutX="288.0" layoutY="53.0" prefHeight="27.0" prefWidth="123.0" style="-fx-background-color: #242424;" text="Start location:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField alignment="CENTER" layoutX="303.0" layoutY="81.0" prefHeight="30.0" prefWidth="43.0" promptText="x" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" fx:id="xStartOrder">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <Label layoutX="176.0" layoutY="115.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #242424;" text="Location" textAlignment="CENTER" textFill="#9f2b68">
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField fx:id="yStartOrder" alignment="CENTER" layoutX="369.0" layoutY="81.0" prefHeight="30.0" prefWidth="43.0" promptText="y" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Label>
-                  <Button layoutX="440.0" layoutY="145.0" mnemonicParsing="false" onAction="#ClearCourierList" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;" text="Clear" textFill="#9f2b68" AnchorPane.bottomAnchor="18.0">
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <Label layoutX="356.0" layoutY="83.0" style="-fx-background-color: #242424;" text="y:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="16.0" /></font>
+                  </Label>
+
+                  <Label layoutX="289.0" layoutY="113.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #242424;" text="End location:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+                  <TextField alignment="CENTER" layoutX="304.0" layoutY="138.0" prefHeight="30.0" prefWidth="43.0" promptText="x" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" fx:id="xEndOrder">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Button>
-                  <Label layoutX="17.0" layoutY="10.0" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #1e1e1e;" text="New Courier" textFill="#9f2b68">
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField fx:id="yEndOrder" alignment="CENTER" layoutX="368.0" layoutY="137.0" prefHeight="30.0" prefWidth="43.0" promptText="y" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
                      <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font></Label>
-                  <Button fx:id="addCourier" layoutX="319.0" layoutY="145.0" mnemonicParsing="false" onAction="#AddCourier" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #1e1e1e;" text="+" textFill="#9f2b68">
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <Label layoutX="355.0" layoutY="139.0" style="-fx-background-color: #242424;" text="y:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Label>
+
+                  <SplitMenuButton fx:id="OrderType" layoutX="10.0" layoutY="173.0" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: #1e1e1e;" text="Type" textFill="#9f2b68">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#LightOrder" text="Light" />
+                        <MenuItem mnemonicParsing="false" onAction="#MediumOrder" text="Medium" />
+                        <MenuItem mnemonicParsing="false" onAction="#HardOrder" text="Hard" />
+                     </items>
+                     <font><Font name="System Bold" size="16.0" /></font>
+                  </SplitMenuButton>
+
+                  <ListView fx:id="OrderList" layoutX="306.0" layoutY="8.0" prefHeight="255.0" prefWidth="186.0" style="-fx-background-color: #2c2c2c;" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
+
+                  <Button fx:id="StartButton11" layoutX="283.0" layoutY="173.0" onAction="#AddOrder" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #1e1e1e;" text="+" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Button>
+                  <Button layoutX="330.0" layoutY="173.0" onAction="#ClearOrderList" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;" text="Clear" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="18.0" /></font>
+                  </Button>
+
+                  <!-- Generate Random Orders -->
+                  <Label layoutX="169.0" layoutY="175.0" prefHeight="32.0" prefWidth="73.0" style="-fx-background-color: #242424;" text="Random:" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="16.0" /></font>
+                  </Label>
+                  <TextField fx:id="randomOrderCount" alignment="CENTER" layoutX="242.0" layoutY="175.0" prefHeight="35.0" prefWidth="34.0" promptText="n" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></Button>
-                  <Label layoutX="180.0" layoutY="14.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="Shift:" textFill="#9f2b68">
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <Label layoutX="288.0" layoutY="81.0" style="-fx-background-color: #242424;" text="x:" textFill="#9f2b68">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="courierTimeStart" layoutX="235.0" layoutY="45.0" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
-                  <TextField fx:id="courierTimeEnd" layoutX="235.0" layoutY="80.0" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;" />
-                  <Label layoutX="177.0" layoutY="45.0" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #242424;" text="From" textFill="#9f2b68">
+                  <Label layoutX="288.0" layoutY="137.0" style="-fx-background-color: #242424;" text="x:" textFill="#9f2b68">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="177.0" layoutY="80.0" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #242424;" text="To" textAlignment="CENTER" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="596.0" layoutY="35.0" prefHeight="430.0" prefWidth="337.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="25.0">
+
+            <!-- Result Section -->
+            <AnchorPane layoutX="596.0" layoutY="14.0" prefHeight="571.0" prefWidth="321.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="14.0">
                <children>
+                  <Label layoutX="118.0" layoutY="6.0" prefHeight="39.0" prefWidth="73.0" style="-fx-background-color: #1e1e1e;" text="Result" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="22.0" /></font>
+                  </Label>
+
                   <ListView fx:id="ResultList" layoutX="306.0" layoutY="8.0" prefHeight="225.0" prefWidth="287.0" style="-fx-background-color: #2c2c2c;" AnchorPane.bottomAnchor="180.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="45.0" />
-                  <Label layoutX="24.0" layoutY="10.0" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #1e1e1e;" text="Result" textAlignment="CENTER" textFill="#9f2b68">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font></Label>
-                  <Button fx:id="StartButton" layoutX="25.0" layoutY="115.0" mnemonicParsing="false" onAction="#StartApplication" prefHeight="58.0" prefWidth="87.0" style="-fx-background-color: #1e1e1e;" text="Start" textFill="#9f2b68" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font></Button>
-                  <Label layoutX="25.0" layoutY="287.0" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #242424;" text="Total outcome:" textAlignment="CENTER" textFill="#9f2b68">
+
+                  <Button fx:id="StartButton" layoutX="220.0" layoutY="482.0" onAction="#StartApplication" prefHeight="57.0" prefWidth="87.0" style="-fx-background-color: #1e1e1e;" text="Start" textFill="#9f2b68">
+                     <font><Font name="System Bold" size="22.0" /></font>
+                  </Button>
+                  <Label layoutX="13.0" layoutY="407.0" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #242424;" text="Total outcome:" textAlignment="CENTER" textFill="#9f2b68">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="25.0" layoutY="321.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #242424;" text="Total distance:" textAlignment="CENTER" textFill="#9f2b68">
+                  <Label layoutX="12.0" layoutY="439.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #242424;" text="Total distance:" textAlignment="CENTER" textFill="#9f2b68">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="outcomeField" layoutX="174.0" layoutY="287.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="0" textAlignment="CENTER" textFill="#9f2b68">
+                  <Label fx:id="outcomeField" layoutX="153.0" layoutY="407.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="0" textAlignment="RIGHT" textFill="#9f2b68">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="distanceField" layoutX="174.0" layoutY="321.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="0" textAlignment="CENTER" textFill="#9f2b68">
+                  <Label fx:id="distanceField" layoutX="153.0" layoutY="439.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="0" textAlignment="CENTER" textFill="#9f2b68">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="269.0" layoutY="287.0" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #242424;" text="rub" textAlignment="CENTER" textFill="#9f2b68">
+                  <Label layoutX="253.0" layoutY="407.0" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #242424;" text="rub" textAlignment="CENTER" textFill="#9f2b68">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="269.0" layoutY="321.0" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #242424;" text="m" textAlignment="CENTER" textFill="#9f2b68">
+                  <Label layoutX="253.0" layoutY="439.0" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #242424;" text="m" textAlignment="CENTER" textFill="#9f2b68">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

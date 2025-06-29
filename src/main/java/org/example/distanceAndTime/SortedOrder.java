@@ -15,8 +15,8 @@ public class SortedOrder {
         List<Date> firstOrderTimeDateFormat = new ArrayList<>();
         List<Date> secondOrderTimeDateFormat = new ArrayList<>();
         for (int i = 0; i < orders.size(); i++) {
-            firstOrderTime.add(orders.get(i).getTime().getStartTimeInterval());
-            secondOrderTime.add(orders.get(i).getTime().getEndTimeInterval());
+           // firstOrderTime.add(orders.get(i).getTime().getStartTimeInterval());
+           // secondOrderTime.add(orders.get(i).getTime().getEndTimeInterval());
         }
         for (int i = 0; i < orders.size(); i++) {
                 firstOrderTimeDateFormat.add(simpleDateFormat.parse(firstOrderTime.get(i)));
@@ -27,11 +27,11 @@ public class SortedOrder {
         Collections.sort(secondOrderTimeDateFormat);
         for (int i = 0; i < orders.size(); i++) {
             for (int j = 0; j < orders.size(); j++) {
-              if(firstOrderTimeDateFormat.get(i).toString().substring(14,19).equals(orders.get(j).getTime().getStartTimeInterval())&&
-                 secondOrderTimeDateFormat.get(i).toString().substring(14,19).equals(orders.get(j).getTime().getEndTimeInterval())){
-                  newList.add(orders.get(j));
-                  break;
-              }
+              //if(firstOrderTimeDateFormat.get(i).toString().substring(14,19).equals(orders.get(j).getTime().getStartTimeInterval())&&
+              ///   secondOrderTimeDateFormat.get(i).toString().substring(14,19).equals(orders.get(j).getTime().getEndTimeInterval())){
+              //    newList.add(orders.get(j));
+             //     break;
+            //  }
             }
         }
        return newList;

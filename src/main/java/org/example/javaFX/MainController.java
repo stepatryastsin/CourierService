@@ -3,17 +3,9 @@ package org.example.javaFX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.example.entity.Order;
-import org.example.entity.Person;
+import org.example.entity.*;
 import org.example.basicAlgorithm.BasicAlgorithm;
-import org.example.entity.EnumCourier;
-import org.example.entity.EnumOrder;
-import org.example.fabricOrder.BuilderOrder;
-import org.example.fabricPerson.BuilderPerson;
-import org.example.entity.Point;
-import org.example.entity.Purpose;
 import org.example.schedule.Schedule;
-import org.example.entity.Time;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +26,7 @@ public class MainController {
     public Label distanceField;
     public Label outcomeField;
     List<Order> orders = new ArrayList<>();
-    List<Person> persons = new ArrayList();
+    List<Courier> persons = new ArrayList();
     public TextField yCourier;
     public TextField xCourier;
     public TextField energyCourier;
@@ -47,15 +39,32 @@ public class MainController {
     public TextField weightOrder;
     public TextField speedCourier;
     public TextField nameCourier;
+    @FXML private TextField randomOrderCount;
+    @FXML private Button generateOrdersBtn;
+    @FXML private TextField randomCourierCount;
+    @FXML private Button generateCouriersBtn;
+    @FXML
+    private void generateRandomOrders(ActionEvent event) {
+        int n = Integer.parseInt(randomOrderCount.getText());
+        for (int i = 0; i < n; i++) {
 
+        }
+    }
+
+    @FXML
+    private void generateRandomCouriers(ActionEvent event) {
+        int m = Integer.parseInt(randomCourierCount.getText());
+        for (int i = 0; i < m; i++) {
+
+        }
+    }
     public void AddOrder(ActionEvent event) throws Exception {
 
-        int id = 1 + OrderList.getItems().size();
-        double xStart = Double.parseDouble(xStartOrder.getText());
-        double yStart = Double.parseDouble(yStartOrder.getText());
+        float xStart = Float.parseFloat(xStartOrder.getText());
+        float yStart = Float.parseFloat(yStartOrder.getText());
 
-        double yEnd = Double.parseDouble(yEndOrder.getText());
-        double xEnd = Double.parseDouble(xEndOrder.getText());
+        float yEnd = Float.parseFloat(yEndOrder.getText());
+        float xEnd = Float.parseFloat(xEndOrder.getText());
 
         Point start = new Point (xStart, yStart);
         Point end = new Point(xEnd,yEnd);
@@ -63,65 +72,55 @@ public class MainController {
         String time2 = endTimeOrder.getText();
         Time time = new Time(time1,time2);
         double weight = Double.parseDouble(weightOrder.getText());
+        OrderFactory  factoryOrder = new OrderFactory();
         switch (OrderType.getText()) {
 
             case "Light":
-                Order orderLight = new BuilderOrder(EnumOrder.LIGHT).id(id).pointStart(start).pointFinish(end).time(time).weight(weight).build();
+                Order orderLight = factoryOrder.create(start,end,time,weight,EnumOrder.LIGHT);
                 orders.add(orderLight);
                 OrderList.getItems().add(orderLight.toString());
-                return;
+                break;
             case "Medium":
-                Order mediumLight = new BuilderOrder(EnumOrder.MEDIUM).id(id).pointStart(start).pointFinish(end).time(time).weight(weight).build();
+                Order mediumLight = factoryOrder.create(start,end,time,weight,EnumOrder.MEDIUM);
                 orders.add(mediumLight);
                 OrderList.getItems().add(mediumLight.toString());
-                return;
+                break;
             case "Hard":
-                Order hardLight = new BuilderOrder(EnumOrder.HARD).id(id).pointStart(start).pointFinish(end).time(time).weight(weight).build();
+                Order hardLight = factoryOrder.create(start,end,time,weight,EnumOrder.HARD);
                 orders.add(hardLight);
                 OrderList.getItems().add(hardLight.toString());
-                return;
-            case "Type":
-                Order order = new Order(id, start, end, time,weight);
-                orders.add(order);
-                OrderList.getItems().add(order.toString());
-                return;
+                break;
         }
 
     }
 
     public void AddCourier(ActionEvent event) throws Exception {
 
-        int id = 1 + CourierList.getItems().size();
         String name = nameCourier.getText();
         double speed = Double.parseDouble(speedCourier.getText());
-        double x = Double.parseDouble(xCourier.getText());
-        double y = Double.parseDouble(yCourier.getText());
+        float x = Float.parseFloat(xCourier.getText());
+        float y = Float.parseFloat(yCourier.getText());
         double energy = Double.parseDouble(energyCourier.getText());
         Point point = new Point(x,y);
         String time1 = courierTimeStart.getText();
         String time2 = courierTimeEnd.getText();
-
+        CourierFactory factoryCourier = new CourierFactory();
         switch (CourierType.getText()){
             case "By foot":
-                Person courierPeople = new BuilderPerson(EnumCourier.PEOPLE).id(id).energy(energy).speed(speed).location(point).name(name).build();
+                Courier courierPeople = factoryCourier.create(name,EnumCourier.PEDESTRIAN,speed,energy,time1,time2,point);
                 persons.add(courierPeople);
                 CourierList.getItems().add(courierPeople.toString());
-                return;
+                break;
             case "By bike":
-                Person bikePeople = new BuilderPerson(EnumCourier.BIKE).id(id).energy(energy).speed(speed).location(point).name(name).build();
+                Courier bikePeople = factoryCourier.create(name,EnumCourier.BICYCLE,speed,energy,time1,time2,point);
                 persons.add(bikePeople);
                 CourierList.getItems().add(bikePeople.toString());
-                return;
+                break;
             case "By car":
-                Person carPeople = new BuilderPerson(EnumCourier.CAR).id(id).energy(energy).speed(speed).location(point).name(name).build();
+                Courier carPeople = factoryCourier.create(name,EnumCourier.CAR,speed,energy,time1,time2,point);
                 persons.add(carPeople);
                 CourierList.getItems().add(carPeople.toString());
-                return;
-            case "Type":
-                Person courier = new Person(id, name, speed, energy, time1,time2, point);
-                persons.add(courier);
-                CourierList.getItems().add(courier.toString());
-                return;
+                break;
         }
     }
 
