@@ -1,11 +1,8 @@
 package org.example.checkCourier;
 
 import org.example.entity.Person;
-import org.example.entity.EnumCourier;
 import org.example.fabricPerson.BuilderPerson;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CheckCourierTest {
 

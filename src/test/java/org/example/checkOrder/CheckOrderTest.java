@@ -1,11 +1,9 @@
 package org.example.checkOrder;
 
-import org.example.entity.Order;
-import org.example.entity.EnumOrder;
+import org.example.entity.order.Order;
 import org.example.fabricOrder.BuilderOrder;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 //0 но < 3 (кг)
 class CheckOrderTest {
 

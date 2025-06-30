@@ -1,7 +1,7 @@
 package org.example.utils;
 
-import org.example.entity.Courier;
-import org.example.entity.Order;
+import org.example.entity.couriers.Courier;
+import org.example.entity.order.Order;
 
 import java.util.Random;
 
@@ -22,7 +22,7 @@ public class Utils {
         double distance = Utils.getDistance(courier,order);
         return distance * 1.07 * (order.getWeight() * 0.75) + 200;
     }
-    public int getRandomNumberUsingNextInt(Random random, int min, int max) {
+    public static int getRandomNumberUsingNextInt(Random random, int min, int max) {
         return random.nextInt(max - min) + min;
     }
 }

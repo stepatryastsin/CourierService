@@ -1,9 +1,9 @@
 package org.example.basicAlgorithm;
 
-import org.example.entity.Courier;
-import org.example.entity.Order;
-import org.example.entity.Purpose;
-import org.example.schedule.Schedule;
+import org.example.entity.couriers.Courier;
+import org.example.entity.order.Order;
+import org.example.entity.utils.Purpose;
+import org.example.entity.Schedule;
 
 
 import java.util.*;

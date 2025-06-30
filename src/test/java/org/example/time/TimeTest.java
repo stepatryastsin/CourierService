@@ -1,6 +1,6 @@
 package org.example.time;
 
-import org.example.entity.Time;
+import org.example.entity.utils.Time;
 import org.junit.jupiter.api.Test;
 
 class TimeTest {

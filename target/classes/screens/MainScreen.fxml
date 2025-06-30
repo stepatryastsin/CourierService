@@ -123,22 +123,28 @@
 
                   <ListView fx:id="CourierList" layoutX="416.0" layoutY="9.0" prefHeight="262.0" prefWidth="186.0" style="-fx-background-color: #2c2c2c;" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="9.0" />
 
-                  <Button fx:id="addCourier" layoutX="277.0" layoutY="166.0" onAction="#AddCourier" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #1e1e1e;" text="+" textFill="#9f2b68">
+                  <Button fx:id="addCourier" layoutX="277.0" layoutY="228.0" onAction="#AddCourier" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #1e1e1e;" text="+" textFill="#9f2b68">
                      <font><Font name="System Bold" size="18.0" /></font>
                   </Button>
-                  <Button layoutX="327.0" layoutY="166.0" onAction="#ClearCourierList" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;" text="Clear" textFill="#9f2b68">
+                  <Button layoutX="328.0" layoutY="228.0" onAction="#ClearCourierList" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;" text="Clear" textFill="#9f2b68">
                      <font><Font name="System Bold" size="18.0" /></font>
                   </Button>
 
                   <!-- Generate Random Couriers -->
-                  <Label layoutX="167.0" layoutY="168.0" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="Random:" textFill="#9f2b68">
+                  <Label layoutX="14.0" layoutY="230.0" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #242424;" text="Random:" textFill="#9f2b68">
                      <font><Font name="System Bold" size="16.0" /></font>
                   </Label>
-                  <TextField fx:id="randomCourierCount" alignment="CENTER" layoutX="237.0" layoutY="166.0" prefHeight="39.0" prefWidth="34.0" promptText="m" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
+                  <TextField fx:id="randomCourierCount" alignment="CENTER" layoutX="94.0" layoutY="228.0" prefHeight="39.0" prefWidth="34.0" promptText="m" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
+                  <Button fx:id="generateRandomCouriers" layoutX="137.0" layoutY="228.0" onAction="#generateRandomCouriers" prefHeight="39.0" prefWidth="60.0" style="-fx-background-color: #1e1e1e;" text="Gen" textFill="#9f2b68">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
+               
             </AnchorPane>
 
             <!-- Order Section -->
@@ -204,18 +210,18 @@
 
                   <ListView fx:id="OrderList" layoutX="306.0" layoutY="8.0" prefHeight="255.0" prefWidth="186.0" style="-fx-background-color: #2c2c2c;" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
 
-                  <Button fx:id="StartButton11" layoutX="283.0" layoutY="173.0" onAction="#AddOrder" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #1e1e1e;" text="+" textFill="#9f2b68">
+                  <Button fx:id="StartButton11" layoutX="282.0" layoutY="221.0" onAction="#AddOrder" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: #1e1e1e;" text="+" textFill="#9f2b68">
                      <font><Font name="System Bold" size="18.0" /></font>
                   </Button>
-                  <Button layoutX="330.0" layoutY="173.0" onAction="#ClearOrderList" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;" text="Clear" textFill="#9f2b68">
+                  <Button layoutX="330.0" layoutY="221.0" onAction="#ClearOrderList" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e;" text="Clear" textFill="#9f2b68">
                      <font><Font name="System Bold" size="18.0" /></font>
                   </Button>
 
                   <!-- Generate Random Orders -->
-                  <Label layoutX="169.0" layoutY="175.0" prefHeight="32.0" prefWidth="73.0" style="-fx-background-color: #242424;" text="Random:" textFill="#9f2b68">
+                  <Label layoutX="16.0" layoutY="224.0" prefHeight="32.0" prefWidth="73.0" style="-fx-background-color: #242424;" text="Random:" textFill="#9f2b68">
                      <font><Font name="System Bold" size="16.0" /></font>
                   </Label>
-                  <TextField fx:id="randomOrderCount" alignment="CENTER" layoutX="242.0" layoutY="175.0" prefHeight="35.0" prefWidth="34.0" promptText="n" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
+                  <TextField fx:id="randomOrderCount" alignment="CENTER" layoutX="89.0" layoutY="223.0" prefHeight="35.0" prefWidth="34.0" promptText="n" style="-fx-background-color: #1e1e1e; -fx-text-fill: #9f2b68;">
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
@@ -229,6 +235,11 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="generateRandomOrders" layoutX="139.0" layoutY="221.0" onAction="#generateRandomOrders" prefHeight="39.0" prefWidth="60.0" style="-fx-background-color: #1e1e1e;" text="Gen" textFill="#9f2b68">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
 

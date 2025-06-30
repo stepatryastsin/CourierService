@@ -3,178 +3,180 @@ package org.example.javaFX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.example.entity.*;
 import org.example.basicAlgorithm.BasicAlgorithm;
-import org.example.schedule.Schedule;
+import org.example.entity.couriers.Courier;
+import org.example.entity.couriers.CourierFactory;
+import org.example.entity.couriers.CourierTypeFactory;
+import org.example.entity.couriers.RandomCourier;
+import org.example.entity.utils.Point;
+import org.example.entity.utils.Purpose;
+import org.example.entity.utils.Time;
+import org.example.entity.Schedule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
+
+import org.example.entity.order.Order;
+import org.example.entity.order.OrderFactory;
+import org.example.entity.order.OrderTypeFactory;
+import org.example.entity.order.RandomOrder;
 
 public class MainController {
-    @FXML
 
-    public Button StartButton;
+    @FXML private Button StartButton;
 
-    public ListView <String> CourierList;
+    @FXML private ListView<String> CourierList;
+    @FXML private ListView<String> OrderList;
+    @FXML private ListView<Purpose> ResultList;
 
-    public ListView <String> OrderList;
-    public ListView ResultList;
-    public TextField courierTimeStart;
-    public TextField courierTimeEnd;
-    public SplitMenuButton CourierType;
-    public SplitMenuButton OrderType;
-    public Label distanceField;
-    public Label outcomeField;
-    List<Order> orders = new ArrayList<>();
-    List<Courier> persons = new ArrayList();
-    public TextField yCourier;
-    public TextField xCourier;
-    public TextField energyCourier;
-    public TextField endTimeOrder;
-    public TextField startTimeOrder;
-    public TextField xStartOrder;
-    public TextField xEndOrder;
-    public TextField yStartOrder;
-    public TextField yEndOrder;
-    public TextField weightOrder;
-    public TextField speedCourier;
-    public TextField nameCourier;
+    @FXML private TextField courierTimeStart;
+    @FXML private TextField courierTimeEnd;
+    @FXML private SplitMenuButton CourierType;
+
     @FXML private TextField randomOrderCount;
-    @FXML private Button generateOrdersBtn;
     @FXML private TextField randomCourierCount;
-    @FXML private Button generateCouriersBtn;
+    @FXML private SplitMenuButton OrderType;
+
+    @FXML private Label distanceField;
+    @FXML private Label outcomeField;
+
+    @FXML private TextField yCourier;
+    @FXML private TextField xCourier;
+    @FXML private TextField energyCourier;
+    @FXML private TextField speedCourier;
+    @FXML private TextField nameCourier;
+
+    @FXML private TextField endTimeOrder;
+    @FXML private TextField startTimeOrder;
+    @FXML private TextField xStartOrder;
+    @FXML private TextField yStartOrder;
+    @FXML private TextField xEndOrder;
+    @FXML private TextField yEndOrder;
+    @FXML private TextField weightOrder;
+
+    private final List<Order> orders = new ArrayList<>();
+    private final List<Courier> persons = new ArrayList<>();
+
     @FXML
     private void generateRandomOrders(ActionEvent event) {
-        int n = Integer.parseInt(randomOrderCount.getText());
-        for (int i = 0; i < n; i++) {
-
-        }
+        int count = parseInt(randomOrderCount);
+        IntStream.range(0, count)
+                .mapToObj(i -> RandomOrder.getRandomOrder())
+                .peek(order -> {
+                    orders.add(order);
+                    OrderList.getItems().add(order.toString());
+                })
+                .forEach(o -> {});
     }
 
     @FXML
     private void generateRandomCouriers(ActionEvent event) {
-        int m = Integer.parseInt(randomCourierCount.getText());
-        for (int i = 0; i < m; i++) {
-
-        }
-    }
-    public void AddOrder(ActionEvent event) throws Exception {
-
-        float xStart = Float.parseFloat(xStartOrder.getText());
-        float yStart = Float.parseFloat(yStartOrder.getText());
-
-        float yEnd = Float.parseFloat(yEndOrder.getText());
-        float xEnd = Float.parseFloat(xEndOrder.getText());
-
-        Point start = new Point (xStart, yStart);
-        Point end = new Point(xEnd,yEnd);
-        String time1 = startTimeOrder.getText();
-        String time2 = endTimeOrder.getText();
-        Time time = new Time(time1,time2);
-        double weight = Double.parseDouble(weightOrder.getText());
-        OrderFactory  factoryOrder = new OrderFactory();
-        switch (OrderType.getText()) {
-
-            case "Light":
-                Order orderLight = factoryOrder.create(start,end,time,weight,EnumOrder.LIGHT);
-                orders.add(orderLight);
-                OrderList.getItems().add(orderLight.toString());
-                break;
-            case "Medium":
-                Order mediumLight = factoryOrder.create(start,end,time,weight,EnumOrder.MEDIUM);
-                orders.add(mediumLight);
-                OrderList.getItems().add(mediumLight.toString());
-                break;
-            case "Hard":
-                Order hardLight = factoryOrder.create(start,end,time,weight,EnumOrder.HARD);
-                orders.add(hardLight);
-                OrderList.getItems().add(hardLight.toString());
-                break;
-        }
-
+        int count = parseInt(randomCourierCount);
+        IntStream.range(0, count)
+                .mapToObj(i -> RandomCourier.getRandomCourier())
+                .peek(courier -> {
+                    persons.add(courier);
+                    CourierList.getItems().add(courier.toString());
+                })
+                .forEach(c -> {});
     }
 
-    public void AddCourier(ActionEvent event) throws Exception {
-
-        String name = nameCourier.getText();
-        double speed = Double.parseDouble(speedCourier.getText());
-        float x = Float.parseFloat(xCourier.getText());
-        float y = Float.parseFloat(yCourier.getText());
-        double energy = Double.parseDouble(energyCourier.getText());
-        Point point = new Point(x,y);
-        String time1 = courierTimeStart.getText();
-        String time2 = courierTimeEnd.getText();
-        CourierFactory factoryCourier = new CourierFactory();
-        switch (CourierType.getText()){
-            case "By foot":
-                Courier courierPeople = factoryCourier.create(name,EnumCourier.PEDESTRIAN,speed,energy,time1,time2,point);
-                persons.add(courierPeople);
-                CourierList.getItems().add(courierPeople.toString());
-                break;
-            case "By bike":
-                Courier bikePeople = factoryCourier.create(name,EnumCourier.BICYCLE,speed,energy,time1,time2,point);
-                persons.add(bikePeople);
-                CourierList.getItems().add(bikePeople.toString());
-                break;
-            case "By car":
-                Courier carPeople = factoryCourier.create(name,EnumCourier.CAR,speed,energy,time1,time2,point);
-                persons.add(carPeople);
-                CourierList.getItems().add(carPeople.toString());
-                break;
-        }
+    @FXML
+    private void AddOrder(ActionEvent event) {
+        Order order = createOrderFromFields();
+        orders.add(order);
+        OrderList.getItems().add(order.toString());
     }
 
-    public void StartApplication(ActionEvent event) {
+    @FXML
+    private void AddCourier(ActionEvent event) {
+        Courier courier = createCourierFromFields();
+        persons.add(courier);
+        CourierList.getItems().add(courier.toString());
+    }
+
+    @FXML
+    private void StartApplication(ActionEvent event) {
         ResultList.getItems().clear();
-        Schedule schedule = BasicAlgorithm.basicAlgorithm(persons,orders);
-        for (Purpose helpPurpose : schedule.getAllPurpose()) {
-            ResultList.getItems().add(helpPurpose);
-        }
 
-        double outcome = Math.round(schedule.getIncomeSchedule());
-        double distance = Math.round(schedule.getTotalLength());
+        Schedule schedule = BasicAlgorithm.basicAlgorithm(persons, orders);
+        schedule.getAllPurpose().forEach(ResultList.getItems()::add);
 
-        outcomeField.setText(Double.toString(outcome));
-        distanceField.setText(Double.toString(distance));
-
-
+        outcomeField.setText(String.valueOf(Math.round(schedule.getIncomeSchedule())));
+        distanceField.setText(String.valueOf(Math.round(schedule.getTotalLength())));
     }
 
-    public void LightOrder(ActionEvent event) throws Exception {
-        OrderType.setText("Light");
-    }
+    @FXML private void LightOrder(ActionEvent event) throws Exception { OrderType.setText("Light"); }
+    @FXML private void MediumOrder(ActionEvent event) throws Exception{ OrderType.setText("Medium"); }
+    @FXML private void HardOrder(ActionEvent event) throws Exception  { OrderType.setText("Hard"); }
 
-    public void MediumOrder(ActionEvent event) throws Exception {
+    @FXML private void BikeCourier(ActionEvent event)  { CourierType.setText("By bike"); }
+    @FXML private void CarCourier(ActionEvent event)   { CourierType.setText("By car"); }
+    @FXML private void PeopleCourier(ActionEvent event){ CourierType.setText("By foot"); }
 
-        OrderType.setText("Medium");
-    }
-
-    public void HardOrder(ActionEvent event) throws Exception {
-        OrderType.setText("Hard");
-
-    }
-
-    public void BikeCourier(ActionEvent event) {
-        CourierType.setText("By bike");
-    }
-
-    public void CarCourier(ActionEvent event) {
-        CourierType.setText("By car");
-    }
-
-    public void PeopleCourier(ActionEvent event) {
-        CourierType.setText("By foot");
-    }
-
-    public void ClearCourierList(ActionEvent event) {
-        CourierList.getItems().clear();
+    @FXML private void ClearCourierList(ActionEvent event){
         persons.clear();
+        CourierList.getItems().clear();
     }
 
-    public void ClearOrderList(ActionEvent event) {
-        OrderList.getItems().clear();
+    @FXML private void ClearOrderList(ActionEvent event){
         orders.clear();
+        OrderList.getItems().clear();
     }
 
+    // ======= Helper methods =======
 
+    private int parseInt(TextField field) {
+        try {
+            return Integer.parseInt(field.getText());
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    private Order createOrderFromFields() {
+        Point start  = new Point(parseFloat(xStartOrder), parseFloat(yStartOrder));
+        Point finish = new Point(parseFloat(xEndOrder), parseFloat(yEndOrder));
+        Time  time   = new Time(startTimeOrder.getText(), endTimeOrder.getText());
+        double weight = parseDouble(weightOrder);
+        String typeKey = OrderType.getText().toUpperCase();
+        var type = OrderTypeFactory.getByName(typeKey);
+
+        return new OrderFactory().create(start, finish, time, weight, type);
+    }
+
+    private Courier createCourierFromFields() {
+        String name    = nameCourier.getText();
+        double speed   = parseDouble(speedCourier);
+        double capacity= parseDouble(energyCourier);
+        Point location = new Point(parseFloat(xCourier), parseFloat(yCourier));
+        Time workTime  = new Time(courierTimeStart.getText(), courierTimeEnd.getText());
+
+        String text = CourierType.getText();
+        var type = switch (text) {
+            case "By foot" -> CourierTypeFactory.getByName("PEDESTRIAN");
+            case "By bike" -> CourierTypeFactory.getByName("BICYCLE");
+            case "By car"  -> CourierTypeFactory.getByName("CAR");
+            default -> throw new IllegalArgumentException("Unknown courier type: " + text);
+        };
+
+        return new CourierFactory().create(name, type, speed, capacity, workTime, location);
+    }
+
+    private float parseFloat(TextField field) {
+        try {
+            return Float.parseFloat(field.getText());
+        } catch (NumberFormatException e) {
+            return 0f;
+        }
+    }
+
+    private double parseDouble(TextField field) {
+        try {
+            return Double.parseDouble(field.getText());
+        } catch (NumberFormatException e) {
+            return 0d;
+        }
+    }
 }

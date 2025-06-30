@@ -1,6 +1,6 @@
 package org.example.point;
 
-import org.example.entity.Point;
+import org.example.entity.utils.Point;
 import org.junit.jupiter.api.Test;
 
 class PointTest {

@@ -1,6 +1,6 @@
 package org.example.distanceAndTime;
 
-import org.example.entity.Order;
+import org.example.entity.order.Order;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
