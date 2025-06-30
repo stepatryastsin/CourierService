@@ -2,9 +2,8 @@ package org.example.dividingTheQueue;
 
 import org.example.entity.order.Order;
 import org.example.entity.Person;
-import org.example.basicAlgorithm.BasicAlgorithm;
 import org.example.entity.utils.Point;
-import org.example.entity.Schedule;
+import org.example.algorithm.Schedule;
 import org.example.entity.utils.Time;
 import org.junit.jupiter.api.Test;
 

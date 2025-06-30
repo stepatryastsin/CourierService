@@ -3,18 +3,19 @@ package org.example.javaFX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.example.basicAlgorithm.BasicAlgorithm;
+import org.example.algorithm.RoutePlanner;
 import org.example.entity.couriers.Courier;
 import org.example.entity.couriers.CourierFactory;
 import org.example.entity.couriers.CourierTypeFactory;
 import org.example.entity.couriers.RandomCourier;
 import org.example.entity.utils.Point;
-import org.example.entity.utils.Purpose;
+import org.example.algorithm.Purpose;
 import org.example.entity.utils.Time;
-import org.example.entity.Schedule;
+import org.example.algorithm.Schedule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 import org.example.entity.order.Order;
@@ -100,16 +101,29 @@ public class MainController {
     private void StartApplication(ActionEvent event) {
         ResultList.getItems().clear();
 
-        Schedule schedule = BasicAlgorithm.basicAlgorithm(persons, orders);
-        schedule.getAllPurpose().forEach(ResultList.getItems()::add);
+        var route = new RoutePlanner();
+        Map<Courier, Schedule> schedules = route.plan(persons, orders);
 
-        outcomeField.setText(String.valueOf(Math.round(schedule.getIncomeSchedule())));
-        distanceField.setText(String.valueOf(Math.round(schedule.getTotalLength())));
+        // Обойти все расписания всех курьеров и вывести назначения
+        for (Schedule sched : schedules.values()) {
+            sched.getAllPurposes().forEach(ResultList.getItems()::add);
+        }
+
+        // Подсчёт суммарного дохода и расстояния всех курьеров
+        double totalIncome = schedules.values().stream()
+                .mapToDouble(Schedule::getIncomeSchedule)
+                .sum();
+        double totalDistance = schedules.values().stream()
+                .mapToDouble(Schedule::getTotalDistance)
+                .sum();
+
+        outcomeField.setText(String.valueOf(Math.round(totalIncome)));
+        distanceField.setText(String.valueOf(Math.round(totalDistance)));
     }
 
-    @FXML private void LightOrder(ActionEvent event) throws Exception { OrderType.setText("Light"); }
-    @FXML private void MediumOrder(ActionEvent event) throws Exception{ OrderType.setText("Medium"); }
-    @FXML private void HardOrder(ActionEvent event) throws Exception  { OrderType.setText("Hard"); }
+    @FXML private void LightOrder(ActionEvent event)  throws Exception { OrderType.setText("Light");  }
+    @FXML private void MediumOrder(ActionEvent event) throws Exception { OrderType.setText("Medium"); }
+    @FXML private void HardOrder(ActionEvent event)   throws Exception { OrderType.setText("Hard");   }
 
     @FXML private void BikeCourier(ActionEvent event)  { CourierType.setText("By bike"); }
     @FXML private void CarCourier(ActionEvent event)   { CourierType.setText("By car"); }
@@ -142,7 +156,6 @@ public class MainController {
         double weight = parseDouble(weightOrder);
         String typeKey = OrderType.getText().toUpperCase();
         var type = OrderTypeFactory.getByName(typeKey);
-
         return new OrderFactory().create(start, finish, time, weight, type);
     }
 

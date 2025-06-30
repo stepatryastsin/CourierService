@@ -2,22 +2,19 @@ package org.example.entity.couriers;
 
 import org.example.entity.utils.Point;
 import org.example.entity.utils.Time;
-import org.example.entity.validate.CourierData;
-import org.example.entity.couriers.couriervalidate.CourierValidator;
-import org.example.entity.Schedule;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public final class Courier {
-    private final int          id;
-    private final String       name;
-    private final CourierType  type;
-    private final double       speed;
-    private final double       loadCapacity;
-    private final Time         workInterval;
-    private       Point        location;
-    private       boolean      free;
-    private       Schedule     schedule;
+    private final int      id;
+    private final String   name;
+    private final CourierType type;
+    private final double   speed;
+    private final double   loadCapacity;
+    private final Time     workInterval;
+    private       Point    location;
+    private       boolean  free;
 
     public Courier(int id,
                    String name,
@@ -25,44 +22,40 @@ public final class Courier {
                    double speed,
                    double loadCapacity,
                    Time workInterval,
-                   Point location,
-                   CourierValidator validator) {
-        var data = new CourierData(id, name, type, speed, loadCapacity, workInterval, location);
-        validator.validate(data);
+                   Point initialLocation) {
 
-        this.id           = id;
-        this.name         = name;
-        this.type         = type;
-        this.speed        = speed;
-        this.loadCapacity = loadCapacity;
-        this.workInterval = workInterval;
-        this.location     = location;
-        this.free         = true;
-        this.schedule     = new Schedule();
+        this.id            = id;
+        this.name          = name;
+        this.type          = type;
+        this.speed         = speed;
+        this.loadCapacity  = loadCapacity;
+        this.workInterval  = workInterval;
+        this.location      = initialLocation;
+        this.free          = true;
     }
 
     // Геттеры
-    public int            getId()           { return id; }
-    public String         getName()         { return name; }
-    public CourierType    getType()         { return type; }
-    public double         getSpeed()        { return speed; }
-    public double         getLoadCapacity() { return loadCapacity; }
-    public LocalDateTime  getWorkStart()    { return workInterval.getStart(); }
-    public LocalDateTime  getWorkEnd()      { return workInterval.getEnd(); }
-    public Point          getLocation()     { return location; }
-    public boolean        isFree()          { return free; }
-    public Schedule       getSchedule()     { return schedule; }
+    public int getId()                  { return id; }
+    public String getName()             { return name; }
+    public CourierType getType()        { return type; }
+    public double getSpeed()            { return speed; }
+    public double getLoadCapacity()     { return loadCapacity; }
+    public Time getWorkInterval()       { return workInterval; }
+    public LocalDateTime getWorkStart() { return workInterval.getStart(); }
+    public LocalDateTime getWorkEnd()   { return workInterval.getEnd(); }
+    public Point getLocation()          { return location; }
+    public boolean isFree()             { return free; }
 
-    // Сеттеры для изменяемых полей
-    public void setLocation(Point location) {
-        this.location = Objects.requireNonNull(location, "Location must not be null");
+    // Сеттеры / утилиты
+    public void setLocation(Point newLoc) {
+        this.location = newLoc;
     }
+
     public void setFree(boolean free) {
         this.free = free;
     }
-    public void setSchedule(Schedule schedule) {
-        this.schedule = Objects.requireNonNull(schedule, "Schedule must not be null");
-    }
+
+
 
     @Override
     public boolean equals(Object o) {

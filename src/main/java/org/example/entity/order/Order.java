@@ -20,11 +20,7 @@ public class Order {
                  Point finish,
                  Time time,
                  double weight,
-                 OrderType type,
-                 OrderValidator validator) {
-        var data = new OrderData(id,start, finish, time, weight, type);
-        validator.validate(data);
-
+                 OrderType type) {
         this.id     = id;
         this.start  = start;
         this.finish = finish;

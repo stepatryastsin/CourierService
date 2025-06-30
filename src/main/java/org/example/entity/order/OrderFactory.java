@@ -17,7 +17,7 @@ public class OrderFactory {
         int id = generateID.getId();
         OrderData data = new OrderData(id, start, finish, time, weight, type);
         validator.validate(data);
-        return new Order(id, start, finish, time, weight, type, validator);
+        return new Order(id, start, finish, time, weight, type);
     }
 
 }

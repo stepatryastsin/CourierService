@@ -21,7 +21,7 @@ public class CourierFactory {
         );
         validator.validate(data);
         return new Courier(
-                id, name, type, speed, loadCapacity, workInterval, location,validator
+                id, name, type, speed, loadCapacity, workInterval, location
         );
     }
 }
